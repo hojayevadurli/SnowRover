@@ -1,24 +1,24 @@
-﻿namespace SnowRover;
+﻿
+using System.Net.Http;
+
+namespace SnowRover;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    HttpClient httpClient;
 
-	public MainPage()
+    public MainPage()
 	{
 		InitializeComponent();
 	}
+    private async void JoinGame_Clicked(object sender, EventArgs e)
+    {
+        httpClient = new HttpClient { BaseAddress = new Uri("https://snow-rover.azurewebsites.net") };
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        var gameID = GameIDEntry.Text;
+        var playerName = PlayerNameEntry.Text;
+        // Your logic to join the game using gameID and playerName
+        var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}");
+    }
 }
 

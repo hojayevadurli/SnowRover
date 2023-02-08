@@ -5,18 +5,20 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">           
+    Spacing="25"
+    Padding="30,0"
+    VerticalOptions="Center">
 
+            <Entry x:Name="GameIDEntry" Placeholder="Enter Game ID" />
+            <Entry x:Name="PlayerNameEntry" Placeholder="Enter Player Name" />
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+        x:Name="JoinGame"
+        Text="Join Game"
+        Clicked="JoinGame_Clicked"
+        HorizontalOptions="Center" />
 
         </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>
