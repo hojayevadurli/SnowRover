@@ -65,8 +65,8 @@ public partial class MainPage : ContentPage
 
     private async void Forward_Clicked(object sender, EventArgs e)
     {
-        var direction = "forward";
-        var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
+        var direction = "Forward";
+        var response = await httpClient.GetAsync($"/game/movePerseverence?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -82,7 +82,7 @@ public partial class MainPage : ContentPage
 
     private async void Left_Clicked(object sender, EventArgs e)
     {
-        var direction = "left";
+        var direction = "Left";
         var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
         if (response.IsSuccessStatusCode)
         {
@@ -98,7 +98,7 @@ public partial class MainPage : ContentPage
     }
     private async void Right_Clicked(object sender, EventArgs e)
     {
-        var direction = "right";
+        var direction = "Right";
         var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
         if (response.IsSuccessStatusCode)
         {
@@ -114,7 +114,7 @@ public partial class MainPage : ContentPage
     }
     private async void Back_Clicked(object sender, EventArgs e)
     {
-        var direction = "back";
+        var direction = "Reverse";
         var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
         if (response.IsSuccessStatusCode)
         {
