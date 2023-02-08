@@ -24,7 +24,31 @@
         HorizontalOptions="Center"
         />
 
-            
+            <StackLayout x:Name="DirectionButtons" IsVisible="False">
+                <Button
+            x:Name="Forward"
+            Text="Forward"
+            Clicked="Forward_Clicked"
+            HorizontalOptions="Center" />
+
+                <Button
+            x:Name="Left"
+            Text="Left"
+            Clicked="Left_Clicked"
+            HorizontalOptions="Center" />
+
+                <Button
+            x:Name="Right"
+            Text="Right"
+            Clicked="Right_Clicked"
+            HorizontalOptions="Center" />
+
+                <Button
+            x:Name="Back"
+            Text="Back"
+            Clicked="Back_Clicked"
+            HorizontalOptions="Center" />
+            </StackLayout>
 
             <Label x:Name="GameStatusLabel"
                Text="Game status will appear here"
