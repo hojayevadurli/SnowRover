@@ -17,6 +17,21 @@
         Clicked="JoinGame_Clicked"
         HorizontalOptions="Center" />
 
+            <Button
+        x:Name="Move"
+        Text="Move"
+        Clicked="Move_Clicked"
+        HorizontalOptions="Center"
+        />
+
+            
+
+            <Label x:Name="GameStatusLabel"
+               Text="Game status will appear here"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+
+
         </VerticalStackLayout>
 
     </ScrollView>
