@@ -86,12 +86,15 @@ public partial class MainPage : ContentPage
     private async void Left_Clicked(object sender, EventArgs e)
     {
         var direction = "Left";
-        var response = await httpClient.GetAsync($"/Game/MovePerseverence?token={gameStatus.Token}&direction={direction}");
+        var response = await httpClient.GetAsync($"/game/moveperseverance?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            statusResult = JsonConvert.DeserializeObject<StatusResult>(content);
-            GameStatusLabel.Text = $"Game status: {statusResult.status}";
+            var moveResult = await response.Content.ReadFromJsonAsync<MoveResponse>();
+            GameStatusLabel.Text = $"Game status: {moveResult.Message}";
+            CurrentLocationLabel.Text = $"Current row:{moveResult.Row}, current column:{moveResult.Column}";
+
+
+            GameStatusLabel.Text = $"Game s tatus: {statusResult.status}";
         }
         else
         {
@@ -102,12 +105,15 @@ public partial class MainPage : ContentPage
     private async void Right_Clicked(object sender, EventArgs e)
     {
         var direction = "Right";
-        var response = await httpClient.GetAsync($"/Game/MovePerseverence?token={gameStatus.Token}&direction={direction}");
+        var response = await httpClient.GetAsync($"/game/moveperseverance?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            statusResult = JsonConvert.DeserializeObject<StatusResult>(content);
-            GameStatusLabel.Text = $"Game status: {statusResult.status}";
+            var moveResult = await response.Content.ReadFromJsonAsync<MoveResponse>();
+            GameStatusLabel.Text = $"Game status: {moveResult.Message}";
+            CurrentLocationLabel.Text = $"Current row:{moveResult.Row}, current column:{moveResult.Column}";
+
+
+            GameStatusLabel.Text = $"Game s tatus: {statusResult.status}";
         }
         else
         {
@@ -118,12 +124,15 @@ public partial class MainPage : ContentPage
     private async void Back_Clicked(object sender, EventArgs e)
     {
         var direction = "Reverse";
-        var response = await httpClient.GetAsync($"/Game/MovePerseverence?token={gameStatus.Token}&direction={direction}");
+        var response = await httpClient.GetAsync($"/game/moveperseverance?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            statusResult = JsonConvert.DeserializeObject<StatusResult>(content);
-            GameStatusLabel.Text = $"Game status: {statusResult.status}";
+            var moveResult = await response.Content.ReadFromJsonAsync<MoveResponse>();
+            GameStatusLabel.Text = $"Game status: {moveResult.Message}";
+            CurrentLocationLabel.Text = $"Current row:{moveResult.Row}, current column:{moveResult.Column}";
+
+
+            GameStatusLabel.Text = $"Game s tatus: {statusResult.status}";
         }
         else
         {
