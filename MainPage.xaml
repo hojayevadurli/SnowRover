@@ -55,6 +55,11 @@
                VerticalOptions="Center"
                HorizontalOptions="Center" />
 
+            <Label x:Name="CurrentLocationLabel"
+               Text="Game status will appear here"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+
 
         </VerticalStackLayout>
 

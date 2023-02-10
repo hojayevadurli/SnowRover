@@ -29,7 +29,7 @@ public partial class MainPage : ContentPage
         // Your logic to join the game using gameID and playerName
         var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}");
         if (response.IsSuccessStatusCode)
-        {
+        {           
             var content = await response.Content.ReadAsStringAsync();
            
             gameStatus = JsonConvert.DeserializeObject<JoinResponse>(content);
@@ -66,12 +66,15 @@ public partial class MainPage : ContentPage
     private async void Forward_Clicked(object sender, EventArgs e)
     {
         var direction = "Forward";
-        var response = await httpClient.GetAsync($"/game/movePerseverence?token={gameStatus.Token}&direction={direction}");
+        var response = await httpClient.GetAsync($"/game/moveperseverance?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            statusResult = JsonConvert.DeserializeObject<StatusResult>(content);
-            GameStatusLabel.Text = $"Game status: {statusResult.status}";
+            var moveResult = await response.Content.ReadFromJsonAsync<MoveResponse>();
+            GameStatusLabel.Text = $"Game status: {moveResult.Message}";
+            CurrentLocationLabel.Text = $"Current row:{moveResult.Row}, current column:{moveResult.Column}";
+           
+
+            GameStatusLabel.Text = $"Game s tatus: {statusResult.status}";
         }
         else
         {
@@ -83,7 +86,7 @@ public partial class MainPage : ContentPage
     private async void Left_Clicked(object sender, EventArgs e)
     {
         var direction = "Left";
-        var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
+        var response = await httpClient.GetAsync($"/Game/MovePerseverence?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -99,7 +102,7 @@ public partial class MainPage : ContentPage
     private async void Right_Clicked(object sender, EventArgs e)
     {
         var direction = "Right";
-        var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
+        var response = await httpClient.GetAsync($"/Game/MovePerseverence?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -115,7 +118,7 @@ public partial class MainPage : ContentPage
     private async void Back_Clicked(object sender, EventArgs e)
     {
         var direction = "Reverse";
-        var response = await httpClient.PostAsync($"/game/move?token={gameStatus.Token}&direction={direction}", null);
+        var response = await httpClient.GetAsync($"/Game/MovePerseverence?token={gameStatus.Token}&direction={direction}");
         if (response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -136,4 +139,15 @@ public partial class MainPage : ContentPage
 public class StatusResult
 {
     public string status { get; set; }
+}
+
+
+public class MoveResponse
+{
+    public int Row { get; set; }
+    public int Column { get; set; }
+    public int BatteryLevel { get; set; }
+    public Neighbor[] Neighbors { get; set; }
+    public string Message { get; set; }
+    public string Orientation { get; set; }
 }
