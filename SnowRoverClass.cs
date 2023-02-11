@@ -1,5 +1,4 @@
-﻿using System;
-///JoinResponse is a class like this:
+﻿///JoinResponse is a class like this:
 public class JoinResponse
 {
     public string Token { get; set; }

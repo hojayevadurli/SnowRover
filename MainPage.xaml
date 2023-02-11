@@ -59,10 +59,7 @@
                Text="Current Location will appear in here"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
-            <Label x:Name="LowResolutionMap"
-               Text="Low resolution map"
-               VerticalOptions="Center"
-               HorizontalOptions="Center" />
+            
 
 
 

@@ -1,8 +1,6 @@
 ﻿
 using Newtonsoft.Json;
-using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 
 namespace SnowRover;
 
@@ -52,14 +50,14 @@ public partial class MainPage : ContentPage
     private async void Move_Clicked(object sender, EventArgs e)
     {
         statusResult = await httpClient.GetFromJsonAsync<StatusResult>($"/game/status?token={gameStatus.Token}");
-        joinResponse = await httpClient.GetFromJsonAsync<JoinResponse>($"/game/join?token={gameStatus.Token}");
 
         GameStatusLabel.Text = $"Game status: {statusResult.status}";
 
         if (statusResult.status == "Playing")
         {
             DirectionButtons.IsVisible = true;
-            LowResolutionMap.IsVisible = true;
+            //LowResolutionMap.Text = gameStatus.LowResolutionMap.Lo;
+            LowResolutionMap lowResolutionMap = new LowResolutionMap(gameStatus);
         }
 
 

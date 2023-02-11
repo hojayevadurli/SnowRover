@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\Users\durli.hojayeva\Desktop\SnowRover\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-10T18:28:14.235</Modified>
+      <Modified>2023-02-11T04:32:33.692</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\durli.hojayeva\Desktop\SnowRover\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-02-10T18:28:13.288</Modified>
+      <Modified>2023-02-11T04:32:32.988</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\durli.hojayeva\Desktop\SnowRover\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\SnowRover.runtimeconfig.json">
       <PackagePath>SnowRover.runtimeconfig.json</PackagePath>
-      <Modified>2023-02-08T06:07:37.304</Modified>
+      <Modified>2023-02-11T04:32:32.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\durli.hojayeva\Desktop\SnowRover\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\SnowRover.dll">
       <PackagePath>SnowRover.dll</PackagePath>
-      <Modified>2023-02-10T18:28:12.393</Modified>
+      <Modified>2023-02-11T04:32:30.352</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\durli.hojayeva\Desktop\SnowRover\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>SnowRover.exe</PackagePath>
-      <Modified>2023-02-10T18:28:12.438</Modified>
+      <Modified>2023-02-11T04:32:30.418</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\durli.hojayeva\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.2\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -923,7 +923,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\durli.hojayeva\Desktop\SnowRover\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\SnowRover.deps.json">
       <PackagePath>SnowRover.deps.json</PackagePath>
-      <Modified>2023-02-10T18:28:14.045</Modified>
+      <Modified>2023-02-11T04:32:33.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.52\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
