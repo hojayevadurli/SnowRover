@@ -11,10 +11,12 @@ public partial class MainPage : ContentPage
     StatusResult statusResult;
     int ingenuityRow;
     int ingenuityCol;
-    JoinResponse joinResponse;
+   
+   JoinResponse joinResponse;
     public MainPage()
 	{
 		InitializeComponent();
+        
 
     }
     private async void JoinGame_Clicked(object sender, EventArgs e)
@@ -57,12 +59,32 @@ public partial class MainPage : ContentPage
         {
             DirectionButtons.IsVisible = true;
             //LowResolutionMap.Text = gameStatus.LowResolutionMap.Lo;
-            LowResolutionMap lowResolutionMap = new LowResolutionMap(gameStatus);
+            //LowResolutionMap lowResolutionMap = new LowResolutionMap(gameStatus);
         }
 
+       
 
     }
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        LowResolutionMap map = new LowResolutionMap(gameStatus);
+        Grid MapGrid = new Grid();
 
+        int[,] highResMap = map.CreateHighResolutionMap();
+
+        for (int row = 0; row < highResMap.GetLength(0); row++)
+        {
+            for (int column = 0; column < highResMap.GetLength(1); column++)
+            {
+                var highResolutionCell = new BoxView();
+                MapGrid.Children.Add(highResolutionCell);
+            }
+        }
+
+        StackLayout stackLayout = new StackLayout();
+        stackLayout.Children.Add(MapGrid);
+        this.Content = stackLayout;
+    }
     private async void Forward_Clicked(object sender, EventArgs e)
     {
         var direction = "Forward";

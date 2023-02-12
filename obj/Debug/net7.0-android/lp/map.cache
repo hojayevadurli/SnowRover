@@ -160,3 +160,8 @@ Xamarin.AndroidX.Preference.dll
 Xamarin.Forms.Platform.Android.dll
 Xamarin.Forms.Platform.dll
 androidx.preference.preference.aar
+Xamarin.Forms.Maps.Android.dll
+Xamarin.GooglePlayServices.Base.dll
+Xamarin.GooglePlayServices.Basement.dll
+Xamarin.GooglePlayServices.Maps.dll
+Xamarin.GooglePlayServices.Tasks.dll
