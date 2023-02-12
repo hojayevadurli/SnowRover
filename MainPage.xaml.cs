@@ -69,7 +69,7 @@ public partial class MainPage : ContentPage
     {
         LowResolutionMap map = new LowResolutionMap(gameStatus);
         Grid MapGrid = new Grid();
-
+        Color greenColor = new Color();
         int[,] highResMap = map.CreateHighResolutionMap();
 
         for (int row = 0; row < highResMap.GetLength(0); row++)
@@ -77,6 +77,8 @@ public partial class MainPage : ContentPage
             for (int column = 0; column < highResMap.GetLength(1); column++)
             {
                 var highResolutionCell = new BoxView();
+                //highResolutionCell.BackgroundColor = greenColor.Green;
+
                 MapGrid.Children.Add(highResolutionCell);
             }
         }
@@ -182,3 +184,4 @@ public class MoveResponse
     public string Message { get; set; }
     public string Orientation { get; set; }
 }
+

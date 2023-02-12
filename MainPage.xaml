@@ -68,7 +68,7 @@
 
             <Grid x:Name="MapGrid" BackgroundColor="DarkGreen" >
                 <!-- Define the row and column definitions for the grid -->
-                <Grid.RowDefinitions>
+                <Grid.RowDefinitions  BackgroundColor="Red">
                     <!-- Add 10 rows with equal height -->
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
