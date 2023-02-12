@@ -54,6 +54,15 @@
             Text="Attack1"
             Clicked="Attack1_Clicked"
             HorizontalOptions="Center" />
+                <Button
+                    x:Name="Attack2"
+                    Text="Attack2"
+                    Clicked="Attack2_Clicked"
+                    HorizontalOptions="Center" 
+                    />
+
+
+
 
             </StackLayout>
 

