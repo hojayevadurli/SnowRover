@@ -26,7 +26,8 @@ namespace SnowRover
                 int lowerLeftColumn = lowResolutionCell.LowerLeftColumn;
                 int upperRightRow = lowResolutionCell.UpperRightRow;
                 int upperRightColumn = lowResolutionCell.UpperRightColumn;
-                int averageDifficulty = lowResolutionCell.AverageDifficulty; for (int row = lowerLeftRow; row <= upperRightRow; row++)
+                int averageDifficulty = lowResolutionCell.AverageDifficulty; 
+                for (int row = lowerLeftRow; row <= upperRightRow; row++)
                 {
                     for (int column = lowerLeftColumn; column <= upperRightColumn; column++)
                     {

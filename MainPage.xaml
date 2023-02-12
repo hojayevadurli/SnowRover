@@ -60,6 +60,12 @@
                     Clicked="Attack2_Clicked"
                     HorizontalOptions="Center" 
                     />
+                <Button
+                    x:Name="Attack3"
+                    Text="Attack3"
+                    Clicked="Attack3_Clicked"
+                    HorizontalOptions="Center" 
+                    />
 
 
 
@@ -73,6 +79,10 @@
 
             <Label x:Name="CurrentLocationLabel"
                Text="Current Location will appear in here"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+            <Label x:Name="GameStatusToken"
+               Text="User tokens will appear here"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
 

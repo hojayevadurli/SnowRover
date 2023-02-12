@@ -244,5 +244,26 @@ public partial class MainPage : ContentPage
         HttpClient httpClient = new HttpClient { BaseAddress = new Uri("https://snow-rover.azurewebsites.net") };
         var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}&id={playerID}");
     }
+
+    private async void Attack3_Clicked(object sender, EventArgs e)
+    {
+       
+        var playerName = "p";
+        var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}");
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+
+            joinResponse = JsonConvert.DeserializeObject<JoinResponse>(content);
+           
+            for (int i = 0;i<10;i++)
+            {
+                GameStatusToken.Text= joinResponse.Token;
+            }
+          
+
+        }
+      
+    }
 }
 
