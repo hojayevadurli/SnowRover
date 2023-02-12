@@ -49,6 +49,12 @@
             Text="Back"
             Clicked="Back_Clicked"
             HorizontalOptions="Center" />
+                <Button
+            x:Name="Attack1"
+            Text="Attack1"
+            Clicked="Attack1_Clicked"
+            HorizontalOptions="Center" />
+
             </StackLayout>
 
             <Label x:Name="GameStatusLabel"
@@ -64,40 +70,14 @@
             <Button Text="Go to LowResolutionMap"
         Clicked="Button_Clicked">
             </Button>
+            <ContentView x:Name="MapContentView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+             BackgroundColor="Transparent"
+             Content="{Binding MapGrid}" />
 
 
-            <Grid x:Name="MapGrid" BackgroundColor="DarkGreen" >
-                <!-- Define the row and column definitions for the grid -->
-                <Grid.RowDefinitions  BackgroundColor="Red">
-                    <!-- Add 10 rows with equal height -->
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
 
-                    <!-- Add 8 more row definitions here -->
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                   
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-              
-                </Grid.ColumnDefinitions>
-            </Grid>
         </VerticalStackLayout>
        
 

@@ -11,28 +11,31 @@ public partial class MainPage : ContentPage
     StatusResult statusResult;
     int ingenuityRow;
     int ingenuityCol;
-   
-   JoinResponse joinResponse;
+    public Color color = Colors.Red;
+    JoinResponse joinResponse;
+    public Grid MapGrid { get; set; }
+    string gameID;
+
     public MainPage()
-	{
-		InitializeComponent();
-        
+    {
+        InitializeComponent();
+
 
     }
     private async void JoinGame_Clicked(object sender, EventArgs e)
     {
         httpClient = new HttpClient { BaseAddress = new Uri("https://snow-rover.azurewebsites.net") };
 
-        var gameID = GameIDEntry.Text;
+        gameID= GameIDEntry.Text;
         var playerName = PlayerNameEntry.Text;
         //hang on to these for later
-       
+
         // Your logic to join the game using gameID and playerName
         var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}");
         if (response.IsSuccessStatusCode)
-        {           
+        {
             var content = await response.Content.ReadAsStringAsync();
-           
+
             gameStatus = JsonConvert.DeserializeObject<JoinResponse>(content);
 
             ingenuityRow = gameStatus.StartingRow;
@@ -62,30 +65,50 @@ public partial class MainPage : ContentPage
             //LowResolutionMap lowResolutionMap = new LowResolutionMap(gameStatus);
         }
 
-       
+
 
     }
     private void Button_Clicked(object sender, EventArgs e)
     {
+
         LowResolutionMap map = new LowResolutionMap(gameStatus);
-        Grid MapGrid = new Grid();
-        Color greenColor = new Color();
-        int[,] highResMap = map.CreateHighResolutionMap();
+        RoverMap roverMap = new RoverMap(gameStatus);
+        //Grid MapGrid = new Grid();
+        // int[,] highResMap = map.CreateHighResolutionMap();
+        // MapGrid = new Grid();
 
-        for (int row = 0; row < highResMap.GetLength(0); row++)
-        {
-            for (int column = 0; column < highResMap.GetLength(1); column++)
-            {
-                var highResolutionCell = new BoxView();
-                //highResolutionCell.BackgroundColor = greenColor.Green;
+        // for (int row = 0; row < highResMap.GetLength(0); row++)
+        // {
+        //     for (int column = 0; column < highResMap.GetLength(1); column++)
+        //     {
+        //         int difficulty = highResMap[row, column];
+        //         var highResolutionCell = new BoxView();
 
-                MapGrid.Children.Add(highResolutionCell);
-            }
-        }
 
-        StackLayout stackLayout = new StackLayout();
-        stackLayout.Children.Add(MapGrid);
-        this.Content = stackLayout;
+        //         if (difficulty <= 100)
+        //         {
+        //             highResolutionCell.BackgroundColor = Colors.Green;
+        //         }
+        //         else if (difficulty <= 150)
+        //         {
+        //             highResolutionCell.BackgroundColor = Colors.LightGreen;
+        //         }
+        //         else if (difficulty <= 200)
+        //         {
+        //             highResolutionCell.BackgroundColor = Colors.Yellow;
+        //         }
+        //         else
+        //         {
+        //             highResolutionCell.BackgroundColor = Colors.Red;
+        //         }
+
+        //         MapGrid.Add(highResolutionCell, row, column);
+        //     }
+        // }
+        //BindingContext = MapGrid;
+
+
+
     }
     private async void Forward_Clicked(object sender, EventArgs e)
     {
@@ -96,7 +119,7 @@ public partial class MainPage : ContentPage
             var moveResult = await response.Content.ReadFromJsonAsync<MoveResponse>();
             GameStatusLabel.Text = $"Game status: {moveResult.Message}";
             CurrentLocationLabel.Text = $"Current row:{moveResult.Row}, current column:{moveResult.Column}";
-           
+
 
             GameStatusLabel.Text = $"Game s tatus: {statusResult.status}";
         }
@@ -165,23 +188,55 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private async void Attack1_Clicked(object sender, EventArgs e)
+    {
 
-}
+        string playerID;
+        string playerName;
+        HttpClient httpClient = new HttpClient { BaseAddress = new Uri("https://snow-rover.azurewebsites.net") };
+        while (true)
+        {
+            for (int i = 0; i <= 100000; i++)
+            {
+                for (int c=0; c<=50000;c++)
+                {
+                    playerID ="bot"+ i;
+                    playerName = "bot" + i;
+                    var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}&id={playerID}");
+
+                };
+                for (int c = 0; c <= 50000; c++)
+                {
+                    playerID = "bot" + i;
+                    playerName = "bot" + i;
+                    var response = await httpClient.GetAsync($"/game/join?gameId={gameID}&name={playerName}&id={playerID}");
+                };
+
+            }
+
+        }
+
+       
+
+    }
 
 
-public class StatusResult
-{
-    public string status { get; set; }
-}
+    public class StatusResult
+    {
+        public string status { get; set; }
+    }
 
 
-public class MoveResponse
-{
-    public int Row { get; set; }
-    public int Column { get; set; }
-    public int BatteryLevel { get; set; }
-    public Neighbor[] Neighbors { get; set; }
-    public string Message { get; set; }
-    public string Orientation { get; set; }
+    public class MoveResponse
+    {
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public int BatteryLevel { get; set; }
+        public Neighbor[] Neighbors { get; set; }
+        public string Message { get; set; }
+        public string Orientation { get; set; }
+    }
+
+   
 }
 

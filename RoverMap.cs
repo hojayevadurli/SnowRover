@@ -1,20 +1,26 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SnowRover
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LowResolutionMap : ContentPage
+    public class RoverMap
     {
+
         private JoinResponse _joinResponse;
         private LowResolutionCell[] map;
         private Grid MapGrid;
-        public int[,] inMemoryMap; public LowResolutionMap(JoinResponse joinResponse)
+        public int[,] inMemoryMap; 
+        
+        public RoverMap(JoinResponse joinResponse)
         {
             _joinResponse = joinResponse;
             map = joinResponse.LowResolutionMap;
             int numberOfRows = map.Max(cell => cell.UpperRightRow) + 1;
             int numberOfColumns = map.Max(cell => cell.UpperRightColumn) + 1;
-            inMemoryMap = new int[numberOfRows, numberOfColumns]; 
+            inMemoryMap = new int[numberOfRows, numberOfColumns];
             InitializeInMemoryMap(map);
             CreateHighResolutionMap();
         }
@@ -34,7 +40,7 @@ namespace SnowRover
                     }
                 }
             }
-            this.Content = MapGrid;
+          
         }
         public int[,] CreateHighResolutionMap()
         {
@@ -64,6 +70,6 @@ namespace SnowRover
             return highResolutionMap;
         }
 
+
     }
 }
-
